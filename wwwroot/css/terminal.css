@@ -16,10 +16,10 @@ body {
 
 .terminal { max-width: 900px; margin: 40px auto; padding: 24px; }
 .highlight { color: var(--secondary); }
+.error { color: var(--primary);}
 .date { color: white; }
 .output { white-space: pre-wrap; }
 .line { margin: 5px 0; }
-.prompt { color: var(--secondary); }
 .cmd-input {
   flex: 1;
   background: transparent;

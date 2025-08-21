@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const output = document.getElementById('output');
 
   // Append the cmd input line
-  function appendLine(text) {
+  function appendLine(text, className) {
     const div = document.createElement('div');
-    div.className = 'highlight';
+    div.className = className;
     div.innerHTML= text;
     output.appendChild(div);
     window.scrollTo(0, document.body.scrollHeight);
@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Runs the command
   async function runCommand(cmd) {
     const outputDiv = document.getElementById("output"); 
-    appendLine(`guest@resume:~$ ${cmd}`);
+    appendLine(`guest@resume:~$ ${cmd}`, "highlight");
 
     if (!allowedCommands.includes(cmd)) {
-      appendLine("Invalid command, type 'help' to see available commands.");
+      appendLine("Invalid command, type 'help' to see available commands.", "error");
       return;
     }
 
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (e) {
       // Handle errors gracefully
-      appendLine('Error contacting server.');
+      appendLine('Error contacting server.', "error");
     }
   }
 
