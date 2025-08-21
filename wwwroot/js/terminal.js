@@ -20,10 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, document.body.scrollHeight);
   }
 
+  // Define allowed commands
+  const allowedCommands = ["help", "about", "education", "languages", "tools", "experience", "projects", "contact", "clear"];
+  
   // Runs the command
   async function runCommand(cmd) {
     const outputDiv = document.getElementById("output"); 
     appendLine(`guest@resume:~$ ${cmd}`);
+
+    if (!allowedCommands.includes(cmd)) {
+      appendLine("Invalid command, type 'help' to see available commands.");
+      return;
+    }
+
     try {
       const res = await fetch(`/run?cmd=${encodeURIComponent(cmd)}`);
       const data = await res.json();
